@@ -1,0 +1,5 @@
+export LFS=/tmp/lfs
+export LFS_DEVICE=/dev/sdc
+export LFS_USER=lfs
+export LFS_STEP=$(cat STEP)
+export LFS_CORES=8
