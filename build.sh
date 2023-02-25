@@ -5,7 +5,7 @@ source CONFIG
 cd host-scripts
 
 # Run every script in /host-scripts
-for i in $(seq 1 18); 
+for i in $(seq 1 28); 
 do 
     clear
 
