@@ -1,5 +1,8 @@
-export LFS=/tmp/lfs
-export LFS_DEVICE=/dev/sdc
+# LFS build dir
+export LFS=/lfs
+
+# LFS username
 export LFS_USER=lfs
-export LFS_STEP=$(cat STEP)
+
+# make -j cores
 export LFS_CORES=8

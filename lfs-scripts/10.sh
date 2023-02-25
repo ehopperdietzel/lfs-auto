@@ -5,24 +5,24 @@ source CONFIG
 ME=$(whoami)
 if [[ "$ME" != "$LFS_USER" ]];
 then
-	echo "ERROR: Script needs to be run as the $LFS_USER user"
-	exit 1
+      echo "ERROR: Script needs to be run as the $LFS_USER user"
+      exit 1
 fi
 
 source ~/.bashrc
 
-# Check if already extracted
-#TEST_FILE=$LFS/usr/include/asm-generic/ioctls.h
-#if test -f "$TEST_FILE"; then
-#  echo "Linux headers already extracted."
-#	exit 0
-#fi
+# Check if already compiled
+TEST_FILE=$LFS/usr/bin/ldd
+if test -f "$TEST_FILE"; then
+      echo "Glibc already compiled."
+      exit 0
+fi
 
 # Extract
 cd $LFS/sources
 
 mkdir tmp
-tar -xf glibc*.tar.* -C tmp --strip-components=1
+tar -xf glibc-*.tar.* -C tmp --strip-components=1
 cd tmp
 
 # Patch
@@ -41,10 +41,20 @@ echo "rootsbindir=/usr/sbin" > configparms
       --with-headers=$LFS/usr/include    \
       libc_cv_slibdir=/usr/lib
 
+# Using 1 core (LFS says using more cores could cause errors)
 make
 make DESTDIR=$LFS install
 
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
 
 echo 'int main(){}' | $LFS_TGT-gcc -xc -
-readelf -l a.out | grep ld-linux
+CHECK_OUT=$(readelf -l a.out | grep ld-linux)
+
+if [[ "$CHECK_OUT" != *"Requesting program interpreter"* ]]; then
+  echo "Glib test failed"
+  exit 1
+fi
+
+rm -v a.out
+
+$LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders

@@ -1,14 +1,13 @@
 #!/bin/bash
 
-source CONFIG
+source ../CONFIG
 
 sudo mkdir -pv $LFS
 sudo chmod -R 777 $LFS
 
 mkdir $LFS/scripts
-cp lfs-scripts/* $LFS/scripts
-cp CONFIG $LFS/scripts
-cp STEP $LFS/scripts
+cp ../lfs-scripts/* $LFS/scripts
+cp ../CONFIG $LFS/scripts
 
 mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
 

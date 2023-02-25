@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source CONFIG
+source ../CONFIG
 
 sudo groupadd $LFS_USER
 sudo useradd -s /bin/bash -g $LFS_USER -m -k /dev/null $LFS_USER

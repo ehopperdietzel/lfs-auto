@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source CONFIG
+source ../CONFIG
 
 [ ! -e /etc/bash.bashrc ] || sudo mv -v /etc/bash.bashrc /etc/bash.bashrc.NOUSE > /dev/null 2>&1
 

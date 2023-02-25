@@ -2,17 +2,17 @@
 
 source CONFIG
 
-# Run every step starting with the number inside the STEP file
-for i in $(seq 1 9); 
+cd host-scripts
+
+# Run every script in /host-scripts
+for i in $(seq 1 18); 
 do 
     clear
+
     echo "###### STEP $i ######"; 
 
-    # Save current step
-    echo $i > ./STEP
-
     # Run the step
-    ./${i}*.sh
+    ./${i}-*.sh
 
     # Check if error
     RET_CODE=$?

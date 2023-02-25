@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source CONFIG
+source ../CONFIG
 
 [ ! -e /etc/bash.bashrc ] || sudo mv -v /etc/bash.bashrc /etc/bash.bashrc.NOUSE > /dev/null 2>&1
 
 sudo rm -r $LFS/sources/tmp > /dev/null 2>&1
-su $LFS_USER -c "cd $LFS/scripts && ./10.sh"
+su $LFS_USER -c "cd $LFS/scripts && ./9.sh"
 
  # Check if error
 RET_CODE=$?

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-source CONFIG
+source ../CONFIG
 
-SUM_CHECK=$(pushd sources 
-md5sum -c SOURCES-MD5 
+mkdir -v ../sources
+
+SUM_CHECK=$(pushd ../sources 
+md5sum -c ../resources/SOURCES-MD5 
 popd)
 
 if [[ "$SUM_CHECK" != *FAILED* ]]; then
@@ -11,21 +13,19 @@ if [[ "$SUM_CHECK" != *FAILED* ]]; then
   mkdir -v $LFS/sources
   sudo chmod -v a+wt $LFS/sources
   echo "Copying sources to LFS"
-  cp sources/* $LFS/sources
+  cp ../sources/* $LFS/sources
   mkdir -v $LFS/scripts
 
   sudo chown root:root $LFS/sources/*
   exit 0
 fi
 
-mkdir -v sources
+wget --input-file=../resources/SOURCES --continue --directory-prefix=../sources
 
-wget --input-file=SOURCES --continue --directory-prefix=sources
+cp ../resources/SOURCES-MD5 ../sources
 
-cp SOURCES-MD5 sources
-
-SUM_CHECK=$(pushd sources 
-md5sum -c SOURCES-MD5 
+SUM_CHECK=$(pushd ../sources 
+md5sum -c ../resources/SOURCES-MD5 
 popd)
 
 if [[ "$SUM_CHECK" == *FAILED* ]]; then
@@ -36,7 +36,7 @@ fi
 mkdir -v $LFS/sources
 sudo chmod -v a+wt $LFS/sources
 echo "Copying sources to LFS"
-cp sources/* $LFS/sources
+cp ../sources/* $LFS/sources
 mkdir -v $LFS/scripts
 
 sudo chown root:root $LFS/sources/*
