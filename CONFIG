@@ -6,3 +6,6 @@ export LFS_USER=lfs
 
 # make -j cores
 export LFS_CORES=8
+
+# Time zone
+export LFS_TZ=America/Santiago

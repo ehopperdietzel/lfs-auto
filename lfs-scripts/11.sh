@@ -9,6 +9,14 @@ then
       exit 1
 fi
 
+# Check if /tools are no longer needed
+CHECK_DIR=$LFS/var/lib/hwclock
+if [ -d "$CHECK_DIR" ];
+then
+    echo "/tools no longer needed."
+    exit 0
+fi
+
 source ~/.bashrc
 
 # Check if already compiled

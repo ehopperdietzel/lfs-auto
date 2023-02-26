@@ -27,4 +27,12 @@ case $(uname -m) in
   x86_64) mkdir -pv $LFS/lib64 ;;
 esac
 
+# Check if /tools are no longer needed
+CHECK_DIR=$LFS/var/lib/hwclock
+if [ -d "$CHECK_DIR" ];
+then
+    echo "/tools no longer needed."
+    exit 0
+fi
+
 mkdir -pv $LFS/tools
