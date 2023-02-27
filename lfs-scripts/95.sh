@@ -5,11 +5,10 @@ source CONFIG
 # Extract
 cd /sources
 mkdir tmp
-tar -xf XML-Parser-*.tar.* -C tmp --strip-components=1
+tar -xf groff-*.tar.* -C tmp --strip-components=1
 cd tmp
 
-perl Makefile.PL
+PAGE=$LFS_PAPER_SIZE ./configure --prefix=/usr
 
 make -j $LFS_CORES
-
 make install

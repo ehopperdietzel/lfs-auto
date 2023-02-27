@@ -8,7 +8,7 @@ cd host-scripts
 mkdir ../steps
 
 # Steps whitelist
-rm ../steps/{1,2,3,4,5}
+rm ../steps/{1,2,3,4,5,114}
 
 # Run every script in /host-scripts
 for i in $(seq 1 $(cat ../COUNT)); 

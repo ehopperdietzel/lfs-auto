@@ -9,3 +9,15 @@ export LFS_CORES=8
 
 # Time zone
 export LFS_TZ=America/Santiago
+
+# Arch
+export LFS_ARCH=x86-64
+
+# Groff default paper size
+export LFS_PAPER_SIZE=A4
+
+# Remove debug info from libs (save a lot of space)
+export LFS_STRIP=y
+
+# /etc/hostname 
+export LFS_HOSTNAME=MyOS
