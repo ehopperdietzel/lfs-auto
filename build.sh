@@ -11,7 +11,7 @@ mkdir ../steps
 rm ../steps/{1,2,3,4,5}
 
 # Run every script in /host-scripts
-for i in $(seq 1 59); 
+for i in $(seq 1 $(cat ../COUNT)); 
 do 
     clear
 
