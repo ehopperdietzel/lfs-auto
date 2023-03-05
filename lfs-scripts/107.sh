@@ -10,8 +10,8 @@ cd tmp
 
 patch -Np1 -i ../systemd-252-security_fix-1.patch
 
-sed -i -e 's/GROUP="render"/GROUP="video"/' \
-       -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
+#sed -i -e 's/GROUP="render"/GROUP="video"/' \
+#       -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
 
 mkdir -p build
 cd       build

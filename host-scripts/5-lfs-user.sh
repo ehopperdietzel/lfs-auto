@@ -10,3 +10,9 @@ case $(uname -m) in
   x86_64) sudo chown -v $LFS_USER $LFS/lib64 ;;
 esac
 
+#if mount | grep $LFS/dev > /dev/null; then
+#    echo "LFS already root"
+#    exit 0
+#fi
+
+sudo chown -v $LFS_USER $LFS/*

@@ -1,17 +1,8 @@
 #!/bin/bash
 
+./is-lfs-user.sh || exit 1
+
 source CONFIG
-
-ME=$(whoami)
-if [[ "$ME" != "$LFS_USER" ]];
-then
-	echo "ERROR: Script needs to be run as the $LFS_USER user"
-	exit 1
-fi
-
-cat > ~/.bash_profile << "EOF"
-#HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
-EOF
 
 cat > ~/.bashrc << "EOF"
 HOME=$HOME 

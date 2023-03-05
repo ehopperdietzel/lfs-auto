@@ -1,13 +1,8 @@
 #!/bin/bash
 
-source CONFIG
+./is-lfs-user.sh || exit 1
 
-ME=$(whoami)
-if [[ "$ME" != "$LFS_USER" ]];
-then
-	echo "ERROR: Script needs to be run as the $LFS_USER user"
-	exit 1
-fi
+source CONFIG
 
 # Check if /tools are no longer needed
 CHECK_DIR=$LFS/var/lib/hwclock

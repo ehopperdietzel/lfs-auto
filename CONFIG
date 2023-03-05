@@ -1,23 +1,26 @@
-# LFS build dir
+# LFS build dir (must be outside your home directory otherwise the LFS user won't have access to it)
 export LFS=/lfs
 
-# LFS username
+# LFS username (used to build LFS and to prevent damaging your host system)
 export LFS_USER=lfs
 
-# make -j cores
-export LFS_CORES=8
+# Number of threads used in make (a good value is the number of cores of your CPU + 1)
+export LFS_CORES=9
 
-# Time zone
+# Default time zone of LFS
 export LFS_TZ=America/Santiago
 
-# Arch
+# Arch (do not change it, since other archs have not been tested)
 export LFS_ARCH=x86-64
 
-# Groff default paper size
+# Groff default paper size (check the 8.59 section of the LFS book for more info)
 export LFS_PAPER_SIZE=A4
 
-# Remove debug info from libs (save a lot of space)
+# Remove debug symbols from libs (saves a lot of space)
 export LFS_STRIP=y
 
-# /etc/hostname 
-export LFS_HOSTNAME=MyOS
+# Gen libs doc (changing this value currently has no effect WIP)
+export LFS_DOC=n
+
+# /etc/hostname
+export LFS_HOSTNAME=LFS-OS

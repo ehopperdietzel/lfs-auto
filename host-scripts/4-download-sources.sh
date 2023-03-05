@@ -4,6 +4,8 @@ source ../CONFIG
 
 mkdir -v ../sources
 
+cp -a ../resources/. ../sources
+
 SUM_CHECK=$(pushd ../sources 
 md5sum -c ../resources/SOURCES-MD5 
 popd)
@@ -11,12 +13,10 @@ popd)
 if [[ "$SUM_CHECK" != *FAILED* ]]; then
   echo "Sources already downloaded"
   mkdir -v $LFS/sources
-  sudo chmod -v a+wt $LFS/sources
+  sudo chmod -v 777 $LFS/sources
   echo "Copying sources to LFS"
-  cp ../sources/* $LFS/sources
+  sudo cp -a ../sources/. $LFS/sources
   mkdir -v $LFS/scripts
-
-  sudo chown root:root $LFS/sources/*
   exit 0
 fi
 
@@ -34,10 +34,9 @@ if [[ "$SUM_CHECK" == *FAILED* ]]; then
 fi
 
 mkdir -v $LFS/sources
-sudo chmod -v a+wt $LFS/sources
+sudo chmod -v 777 $LFS/sources
 echo "Copying sources to LFS"
-cp ../sources/* $LFS/sources
+cp -a ../sources/. $LFS/sources
 mkdir -v $LFS/scripts
 
-sudo chown root:root $LFS/sources/*
 

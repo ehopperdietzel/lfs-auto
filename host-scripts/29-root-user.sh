@@ -2,7 +2,7 @@
 
 source ../CONFIG
 
-if mount | grep $LFS/dev > /dev/null; then
+if [ -d $LFS/dev ]; then
     echo "LFS already root"
     exit 0
 fi
@@ -19,7 +19,6 @@ echo "LFS dirs ownership set to the root user"
 mkdir -pv $LFS/{dev,proc,sys,run}
 
 sudo mount -v --bind /dev $LFS/dev
-
 sudo mount -v --bind /dev/pts $LFS/dev/pts
 sudo mount -vt proc proc $LFS/proc
 sudo mount -vt sysfs sysfs $LFS/sys

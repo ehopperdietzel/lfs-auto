@@ -2,13 +2,6 @@
 
 source CONFIG
 
-CHECK_DIR=/media/floppy
-if [ -d "$CHECK_DIR" ];
-then
-    echo "FHS directories already created"
-    exit 0
-fi
-
 mkdir -pv /{boot,home,mnt,opt,srv}
 
 mkdir -pv /etc/{opt,sysconfig}

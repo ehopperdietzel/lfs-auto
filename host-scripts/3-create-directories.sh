@@ -2,16 +2,25 @@
 
 source ../CONFIG
 
-if mount | grep $LFS/dev > /dev/null; then
-    echo "LFS already root"
-    mkdir $LFS/scripts
-    cp ../lfs-scripts/* $LFS/scripts
-    cp ../CONFIG $LFS/scripts
-    exit 0
-fi
+sudo umount $LFS/dev/shm
+sudo umount $LFS/dev/pts
+sudo umount $LFS/dev
+sudo umount $LFS/proc
+sudo umount $LFS/run
+sudo umount $LFS/sys
+
+sudo rm -r $LFS/{dev,proc,sys,run}
+
+#if mount | grep $LFS/dev > /dev/null; then
+#    echo "LFS already root"
+#    mkdir $LFS/scripts
+#    cp ../lfs-scripts/* $LFS/scripts
+#    cp ../CONFIG $LFS/scripts
+#    exit 0
+#fi
 
 sudo mkdir -pv $LFS
-sudo chmod -R 777 $LFS
+sudo chmod 777 $LFS
 
 mkdir $LFS/scripts
 cp ../lfs-scripts/* $LFS/scripts
