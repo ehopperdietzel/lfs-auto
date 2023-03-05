@@ -1,6 +1,6 @@
 # lfs-auto
 
-This is an automated Linux From Scratch build based on the LFS 11.2 systemd book. The system is built in a directory instead of mounted partitions and can then be built into an EFI & BIOS bootable ISO with persistent storage. All steps follow the order of the book except for the Grub section (step 118), which is omitted since the grub bootloader is installed when calling the ```persistent-usb.sh``` script.
+This is an automated Linux From Scratch build based on the LFS 11.2 systemd book. The system is built in a directory instead of mounted partitions and can then be built into an EFI & BIOS bootable USB stick with persistent storage. All steps follow the order of the book except for the Grub section (step 118), which is omitted since the grub bootloader is installed when calling the ```persistent-usb.sh``` script.
 
 **Note: This has only been tested on Debian based distros with X86_64 arch.**
 
